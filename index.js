@@ -24,6 +24,7 @@ const swaggerSpec = swaggerJsdoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 //bcrypt
 const bcrypt = require('bcrypt');
+
 const saltRounds = 10;
 var hashed;
 //token
