@@ -34,6 +34,39 @@ var checkpassword;
 
 app.use(express.json());
 
+/**
+ * @swagger
+ * /loginOwner:
+ *   post:
+ *     summary: Login for Owner
+ *     description: Authenticate an owner user
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               idNumber:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Authentication successful
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       '400':
+ *         description: Invalid request body
+ *       '401':
+ *         description: Unauthorized - Invalid credentials
+ */
+
 //login as Owner
 app.post( '/loginOwner',async function (req, res) {
   let {idNumber, password} = req.body
