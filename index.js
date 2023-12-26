@@ -222,6 +222,68 @@ app.post('/checkinVisitor', async function (req, res) {
   });
 });
 
+
+/**
+ * @swagger
+ * /checkinVisitor:
+ *   post:
+ *     summary: Check-in Visitor
+ *     description: Check-in a visitor by owner or security personnel
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               role:
+ *                 type: string
+ *               name:
+ *                 type: string
+ *               idNumber:
+ *                 type: string
+ *               documentType:
+ *                 type: string
+ *               gender:
+ *                 type: string
+ *               birthDate:
+ *                 type: string
+ *                 format: date
+ *               age:
+ *                 type: integer
+ *               documentExpiry:
+ *                 type: string
+ *                 format: date
+ *               company:
+ *                 type: string
+ *               TelephoneNumber:
+ *                 type: string
+ *               vehicleNumber:
+ *                 type: string
+ *               category:
+ *                 type: string
+ *               ethnicity:
+ *                 type: string
+ *               photoAttributes:
+ *                 type: string
+ *               passNumber:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Visitor checked in successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *       '400':
+ *         description: Invalid request body
+ *       '401':
+ *         description: Unauthorized - User does not have access to check in a visitor
+ */
+
 //view visitor 
 app.get('/viewVisitor', async (req, res) => {
   await client.connect();
