@@ -307,12 +307,50 @@ app.get('/', async (req, res) => {
   res.send("hello world")
 })
 
+
+/**
+ * @swagger
+ * /changePassNumber:
+ *   post:
+ *     summary: Change Pass Number
+ *     description: Change pass number for security personnel
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               savedidNumber:
+ *                 type: string
+ *               newpassNumber:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Pass number changed successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 savedidNumber:
+ *                   type: string
+ *                 newpassNumber:
+ *                   type: string
+ *       '400':
+ *         description: Invalid request body
+ *       '401':
+ *         description: Unauthorized - User does not have access
+ *       '403':
+ *         description: Forbidden - User role does not permit this action
+ */
+
 //change pass number
 app.post('/changePassNumber', async function (req, res) {
   let header = req.headers.authorization;
   let token = header.split(' ')[1];
 
-  jwt.verify(token, privatekey, async function(err, decoded) {
+  jwt.verify(token, privatekey, async function (err, decoded) {
     if (err) {
       console.log("Error decoding token:", err);
       return res.status(401).json({ error: 'Unauthorized' });
@@ -330,7 +368,6 @@ app.post('/changePassNumber', async function (req, res) {
     }
   });
 });
-
 
 
 //checkout visitor
