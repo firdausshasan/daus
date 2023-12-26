@@ -369,6 +369,43 @@ app.post('/changePassNumber', async function (req, res) {
   });
 });
 
+/**
+ * @swagger
+ * /checkoutVisitor:
+ *   post:
+ *     summary: Checkout Visitor
+ *     description: Checkout a visitor by security personnel
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               idNumber:
+ *                 type: string
+ *     responses:
+ *       '200':
+ *         description: Visitor checked out successfully
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 name:
+ *                   type: string
+ *                 idNumber:
+ *                   type: string
+ *       '400':
+ *         description: Invalid request body
+ *       '401':
+ *         description: Unauthorized - User does not have access
+ *       '403':
+ *         description: Forbidden - User role does not permit this action
+ */
+
 
 //checkout visitor
 app.post('/checkoutVisitor', async function (req, res) {
